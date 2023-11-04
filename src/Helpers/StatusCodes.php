@@ -1,0 +1,70 @@
+<?php
+
+namespace Arman\LaravelHelper\Helpers;
+
+class StatusCodes
+{
+    const Continue = 100;
+    const Switching_protocols = 101;
+    const Processing = 102;
+    const Early_hints = 103;
+    const Ok = 200;
+    const Created = 201;
+    const Accepted = 202;
+    const Non_authoritative_information = 203;
+    const No_content = 204;
+    const Reset_content = 205;
+    const Partial_content = 206;
+    const Multi_status = 207;
+    const Already_reported = 208;
+    const Im_used = 226;
+    const Multiple_choices = 300;
+    const Moved_permanently = 301;
+    const Found = 302;
+    const See_other = 303;
+    const Not_modified = 304;
+    const Use_proxy = 305;
+    const Switch_proxy = 306;
+    const Temporary_redirect = 307;
+    const Permanent_redirect = 308;
+    const Bad_request = 400;
+    const Unauthorized = 401;
+    const Payment_required = 402;
+    const Forbidden = 403;
+    const Not_found = 404;
+    const Method_not_allowed = 405;
+    const Not_acceptable = 406;
+    const Proxy_authentication_required = 407;
+    const Request_timeout = 408;
+    const Conflict = 409;
+    const Gone = 410;
+    const Length_required = 411;
+    const Precondition_failed = 412;
+    const Payload_too_large = 413;
+    const Uri_too_long = 414;
+    const Unsupported_media_type = 415;
+    const Range_not_satisfiable = 416;
+    const Expectation_failed = 417;
+    const Teapot = 418;
+    const Misdirected_request = 421;
+    const Unprocessable_entity = 422;
+    const Locked = 423;
+    const Failed_dependency = 424;
+    const Too_early = 425;
+    const Upgrade_required = 426;
+    const Precondition_required = 428;
+    const Many_requests = 429;
+    const Request_header_fields_too_large = 431;
+    const Unavailable_for_legal_reasons = 451;
+    const Internal_server_error = 500;
+    const Not_implemented = 501;
+    const Bad_gateway = 502;
+    const Service_unavailable = 503;
+    const Gateway_timeout = 504;
+    const Http_version_not_supported = 505;
+    const Variant_also_negotiates = 506;
+    const Insufficient_storage = 507;
+    const Loop_detected = 508;
+    const Not_extended = 510;
+    const Network_authentication_require = 511;
+}
