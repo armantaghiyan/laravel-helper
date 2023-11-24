@@ -1,7 +1,10 @@
 {
   "name": "arman/laravel-helper",
   "description": "Laravel Helper.",
-  "keywords": ["laravel", "helper"],
+  "keywords": [
+    "laravel",
+    "helper"
+  ],
   "license": "MIT",
   "autoload": {
     "psr-4": {
