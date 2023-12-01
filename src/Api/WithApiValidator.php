@@ -1,6 +1,6 @@
 <?php
 
-namespace Arman\LaravelHelper\Helpers;
+namespace Arman\LaravelHelper\Api;
 
 use Arman\LaravelHelper\Exceptions\ValidationException;
 use Illuminate\Validation\Validator;

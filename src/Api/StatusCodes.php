@@ -1,6 +1,6 @@
 <?php
 
-namespace Arman\LaravelHelper\Helpers;
+namespace Arman\LaravelHelper\Api;
 
 class StatusCodes
 {

@@ -2,8 +2,8 @@
 
 namespace Arman\LaravelHelper\Exceptions;
 
-use Arman\LaravelHelper\Helpers\Api;
-use Arman\LaravelHelper\Helpers\StatusCodes;
+use Arman\LaravelHelper\Api\Api;
+use Arman\LaravelHelper\Api\StatusCodes;
 use Illuminate\Http\JsonResponse;
 
 class ValidationException extends \Exception
