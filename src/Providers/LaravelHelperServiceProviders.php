@@ -2,6 +2,8 @@
 
 namespace Arman\LaravelHelper\Providers;
 
+use Arman\LaravelHelper\Console\ClearCacheCommand;
+use Arman\LaravelHelper\Console\CreateConstCommand;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class LaravelHelperServiceProviders extends ServiceProvider
@@ -19,6 +21,7 @@ class LaravelHelperServiceProviders extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->registerCommands();
         $this->loadHelpers();
         $this->publishedFiles();
     }
@@ -40,5 +43,21 @@ class LaravelHelperServiceProviders extends ServiceProvider
             __DIR__ . '/../Extras/consts.php' => app_path('Extras/consts.php'),
             __DIR__ . '/../Extras/helpers.php' => app_path('Extras/helpers.php'),
         ], 'files');
+    }
+
+    /**
+     * Register the package's commands.
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+//                InstallCommand::class,
+                ClearCacheCommand::class,
+                CreateConstCommand::class,
+            ]);
+        }
     }
 }
