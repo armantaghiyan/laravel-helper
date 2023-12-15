@@ -4,6 +4,7 @@ namespace Arman\LaravelHelper\Providers;
 
 use Arman\LaravelHelper\Console\ClearCacheCommand;
 use Arman\LaravelHelper\Console\CreateConstCommand;
+use Arman\LaravelHelper\Console\InstallCommand;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class LaravelHelperServiceProviders extends ServiceProvider
@@ -26,8 +27,10 @@ class LaravelHelperServiceProviders extends ServiceProvider
         $this->publishedFiles();
     }
 
-    public function loadHelpers()
+    private function loadHelpers()
     {
+        require_once('./../Extras/helpers.php');
+
         $helperFiles = config('helper.files');
         if (gettype($helperFiles) === 'array') {
             foreach ($helperFiles as $file) {
@@ -36,13 +39,12 @@ class LaravelHelperServiceProviders extends ServiceProvider
         }
     }
 
-    public function publishedFiles()
+    private function publishedFiles()
     {
         $this->publishes([
             __DIR__ . '/../config/helper.php' => config_path('helper.php'),
             __DIR__ . '/../Extras/consts.php' => app_path('Extras/consts.php'),
-            __DIR__ . '/../Extras/helpers.php' => app_path('Extras/helpers.php'),
-        ], 'files');
+        ], 'laravel-helper');
     }
 
     /**
@@ -54,7 +56,7 @@ class LaravelHelperServiceProviders extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-//                InstallCommand::class,
+                InstallCommand::class,
                 ClearCacheCommand::class,
                 CreateConstCommand::class,
             ]);

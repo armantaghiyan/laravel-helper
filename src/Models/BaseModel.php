@@ -19,7 +19,7 @@ trait BaseModel
         return null;
     }
 
-    public function checkParam(mixed $value): bool
+    private function checkParam(mixed $value): bool
     {
         if ($value === null || $value === '')
             return false;

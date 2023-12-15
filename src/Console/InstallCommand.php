@@ -27,5 +27,7 @@ class InstallCommand extends Command
      */
     public function handle()
     {
+        $this->callSilent('vendor:publish', ['--tag' => 'laravel-helper']);
+        $this->info('install successfully.');
     }
 }
