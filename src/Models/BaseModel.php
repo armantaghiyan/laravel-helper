@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 trait BaseModel
 {
-    public function correctImage(string $path, string $filename, $default = null, string $disk = null): ?string
+    public function correctImage(string $path, string|null $filename, $default = null, string $disk = null): ?string
     {
         if ($filename || $default) {
             $filename = $filename ?? $default;
