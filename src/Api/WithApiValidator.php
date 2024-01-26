@@ -15,7 +15,7 @@ trait WithApiValidator
     {
         if ($validator->fails()) {
             if ($validator->fails()) {
-                throw new ValidationException($validator->errors()->first());
+                throw new ValidationException($validator->errors());
             }
         }
     }

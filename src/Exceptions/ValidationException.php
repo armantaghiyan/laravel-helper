@@ -17,6 +17,6 @@ class ValidationException extends \Exception
 
     public function render(): JsonResponse
     {
-        return Api::cast(['message' => $this->getMessage()], $this->getCode(), 'error_validation');
+        return Api::cast(['errors' => json_decode($this->getMessage())], $this->getCode(), 'error_validation');
     }
 }
