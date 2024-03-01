@@ -10,12 +10,16 @@ trait WithAuth
     /**
      * @throws NoTokenException
      */
-    function auth($guard = null): \Illuminate\Contracts\Auth\Authenticatable
+    function auth($guard = null, $required=true): ?\Illuminate\Contracts\Auth\Authenticatable
     {
         $user = Auth::guard($guard ?? config('auth.defaults.guard'))->user();
 
         if (!$user) {
-            throw new \Arman\LaravelHelper\Exceptions\NoTokenException();
+			if(!$required){
+				return null;
+			}
+
+			throw new \Arman\LaravelHelper\Exceptions\NoTokenException();
         }
 
         return $user;
