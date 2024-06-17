@@ -4,7 +4,7 @@ namespace Arman\LaravelHelper\Extras;
 
 class Helper {
 
-	public function getUserIp() {
+	public static function getUserIp() {
 		foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key) {
 			if (array_key_exists($key, $_SERVER) === true) {
 				foreach (explode(',', $_SERVER[$key]) as $ip) {
@@ -18,11 +18,11 @@ class Helper {
 		return request()->ip();
 	}
 
-	public function rs(string $relation, array $cols) {
+	public static function rs(string $relation, array $cols) {
 		return "$relation:" . implode(',', $cols);
 	}
 
-	public function getServerMemoryUsage(): array {
+	public static function getServerMemoryUsage(): array {
 		try {
 			$free = shell_exec('free');
 			$free = (string)trim($free);
@@ -42,7 +42,7 @@ class Helper {
 		}
 	}
 
-	public function getCPUUsage(): float|int {
+	public static function getCPUUsage(): float|int {
 		try {
 			$cpu_usage = shell_exec('top -bn1 | grep "Cpu(s)"');
 			preg_match('/\d+\.\d+ id/', $cpu_usage, $matches);
@@ -53,7 +53,7 @@ class Helper {
 		}
 	}
 
-	public function getBaseUrl(string $prefix, bool $withHttp = false): string {
+	public static function getBaseUrl(string $prefix, bool $withHttp = false): string {
 		$url = explode('//', config('app.url'));
 		return ($withHttp ? $url[0] . '//' : '') . ($prefix ? "$prefix." : '') . $url[1];
 	}
