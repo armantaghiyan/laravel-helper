@@ -41,7 +41,11 @@ class LaravelHelperServiceProviders extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/helper.php' => config_path('helper.php'),
-            __DIR__ . '/../Extras/consts.php' => app_path('Extras/consts.php'),
+            __DIR__ . '/../Extras/consts/param.php' => app_path('Extras/consts/param.php'),
+            __DIR__ . '/../Extras/consts/response.php' => app_path('Extras/consts/response.php'),
+            __DIR__ . '/../Extras/consts/result.php' => app_path('Extras/consts/result.php'),
+            __DIR__ . '/../Extras/consts/storage.php' => app_path('Extras/consts/storage.php'),
+            __DIR__ . '/../Extras/consts/cols.php' => app_path('Extras/consts/cols.php'),
         ], 'laravel-helper');
     }
 

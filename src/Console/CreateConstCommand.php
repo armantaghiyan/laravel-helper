@@ -50,7 +50,7 @@ class CreateConstCommand extends Command
         }
 
         try {
-            file_put_contents(app_path('Extras/consts.php'), $text, FILE_APPEND);
+            file_put_contents(app_path('Extras/consts/cols.php'), $text, FILE_APPEND);
             $this->info('mission accomplished.');
         } catch (Throwable $e) {
             $this->error('mission failed.');
