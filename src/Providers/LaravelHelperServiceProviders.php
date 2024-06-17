@@ -29,8 +29,6 @@ class LaravelHelperServiceProviders extends ServiceProvider
 
     private function loadHelpers()
     {
-        require_once(__DIR__ . '/../Extras/helpers.php');
-
         $helperFiles = config('helper.files');
         if (gettype($helperFiles) === 'array') {
             foreach ($helperFiles as $file) {

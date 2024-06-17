@@ -36,6 +36,7 @@ const GUARD_WEB = 'web';
 
 const COL_CREATED_AT = 'created_at';
 const COL_UPDATED_AT = 'updated_at';
+const COL_DELETED_AT = 'deleted_at';
 
 
 const TB_USERS = 'users';
