@@ -41,7 +41,7 @@ class RateLimit {
 	 * @return string
 	 */
 	protected function throttleKey(Request $request): string {
-		$baseIdentifier = request()->getMethod() . '|' . request()->ajax() . '|' . request()->getPathInfo() . '|' . Helper::getUserIp();
+		$baseIdentifier = request()->getMethod() . '|' . request()->ajax() . '|' . request()->getPathInfo() . '|' . request()->ip();
 
 		if ($user = request()->user()) {
 			return sha1(Str::lower($user->getAuthIdentifier() . '|' . $baseIdentifier));
