@@ -39,6 +39,23 @@ class Helper {
 		}
 	}
 
+	public static function getDiscUsage(): array {
+		try {
+			$output = shell_exec('free -m');
+			$lines = explode("\n", trim($output));
+			$data = preg_split('/\s+/', $lines[1]);
+
+			$totalMemory = $data[1];
+			$usedMemory = $data[2];
+
+			$percent_used = ($usedMemory * 100) / $totalMemory;
+
+			return ['memory_total' => number_format((int)$totalMemory), 'memory_used' => number_format((int)$usedMemory), 'percent_used' => (int)$percent_used];
+		} catch (\Throwable $exception) {
+			return ['memory_total' => 0, 'memory_used' => 0, 'percent_used' => 0];
+		}
+	}
+
 	public static function getBaseUrl(string $prefix, bool $withHttp = false): string {
 		$url = explode('//', config('app.url'));
 		return ($withHttp ? $url[0] . '//' : '') . ($prefix ? "$prefix." : '') . $url[1];
