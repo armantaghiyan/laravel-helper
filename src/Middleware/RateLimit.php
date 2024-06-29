@@ -3,7 +3,6 @@
 namespace Arman\LaravelHelper\Middleware;
 
 use Arman\LaravelHelper\Exceptions\RateLimitException;
-use Arman\LaravelHelper\Extras\Helper;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -24,11 +23,13 @@ class RateLimit {
 	public function handle(Request $request, Closure $next, int $maxAttempts = 60): mixed {
 		$key = $this->throttleKey($request);
 
-		if (RateLimiter::tooManyAttempts($key, $perMinute = $maxAttempts)) {
-			throw new RateLimitException();
-		}
+		if (request()->server('SERVER_ADDR') !== request()->ip()) {
+			if (RateLimiter::tooManyAttempts($key, $perMinute = $maxAttempts)) {
+				throw new RateLimitException();
+			}
 
-		RateLimiter::increment($key);
+			RateLimiter::increment($key);
+		}
 
 		return $next($request);
 	}
