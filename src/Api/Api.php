@@ -16,4 +16,9 @@ class Api
     {
         return Api::cast();
     }
+
+	public static function message($message): JsonResponse
+	{
+		return Api::cast(['message' => $message]);
+	}
 }
